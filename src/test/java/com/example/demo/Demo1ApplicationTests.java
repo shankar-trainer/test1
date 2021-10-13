@@ -29,20 +29,22 @@ public class Demo1ApplicationTests {
 	}
 
 	@Test
-	public void getsSinglePeople() throws Exception {
+	public void searchProductTest() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/prd/search/1001").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
 	}
-	/*
-	 * @Test public void returnsNotFoundForInvalidSingleRide() throws Exception {
-	 * mockMvc.perform(MockMvcRequestBuilders.get("/ride/4").accept(MediaType.
-	 * APPLICATION_JSON)) .andExpect(status().isNotFound()).andReturn(); }
-	 * 
-	 * @Test public void addsNewRide() throws Exception { String newRide =
-	 * "{\"name\":\"Monorail\",\"description\":\"Sedate travelling ride.\",\"thrillFactor\":2,\"vomitFactor\":1}"
-	 * ; mockMvc.perform(MockMvcRequestBuilders.post("/ride").contentType(MediaType.
-	 * APPLICATION_JSON).content(newRide)
-	 * .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
-	 * }
-	 */
+
+	@Test
+	public void ProductNotFound() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/prd/search/1").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound()).andReturn();
+	}
+
+	@Test
+	public void addProductTest() throws Exception {
+		String prd = "{\"name\":\"sweets\",\"id\":1090,\"cost\":200.0}";
+		mockMvc.perform(MockMvcRequestBuilders.post("/prd/addProduct").contentType(MediaType.APPLICATION_JSON)
+				.content(prd).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+	}
+
 }
