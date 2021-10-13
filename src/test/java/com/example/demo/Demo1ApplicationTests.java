@@ -42,7 +42,7 @@ public class Demo1ApplicationTests {
 
 	@Test
 	public void addProductTest() throws Exception {
-		String prd = "{\"name\":\"sweets\",\"id\":1090,\"cost\":200.0}";
+		String prd = "{\"name\":\"mobile\",\"id\":1091,\"cost\":9000.0}";
 		mockMvc.perform(MockMvcRequestBuilders.post("/prd/addProduct").contentType(MediaType.APPLICATION_JSON)
 				.content(prd).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 	}
