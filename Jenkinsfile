@@ -5,7 +5,9 @@ node{
   
   stage('Compile-Package Test'){
     def mvnHome=tool name: 'maven', type: 'maven'
-    sh '${mvnHome}/bin/mvn  clean compile test'
+   // sh '${mvnHome}/bin/mvn  clean compile test'
+   // window use bat    
+   bat '${mvnHome}/bin/mvn  clean compile test'
   }
   
   /*stage('Test'){
