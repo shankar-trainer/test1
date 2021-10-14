@@ -4,13 +4,13 @@ node{
   }
   
   stage('Compile-Package'){
-   tool name: 'maven', type: 'maven'
-   sh 'mvn package'
+    def mvnHome=tool name: 'maven', type: 'maven'
+    sh '${mvnHome}/bin/mvn package'
   }
   
   stage('Test'){
    tool name: 'maven', type: 'maven'
-   sh 'mvn test'
+   sh '${mvnHome}/bin/mvn test'
   }
 }
 
