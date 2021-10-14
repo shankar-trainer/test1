@@ -3,14 +3,16 @@ node{
     git 'https://github.com/shankar-trainer/test1'
   }
   
-  stage('Compile-Package'){
+  stage('Compile-Package Test'){
     def mvnHome=tool name: 'maven', type: 'maven'
-    sh '${mvnHome}/bin/mvn package'
+    sh '${mvnHome}/bin/mvn  clean compile test'
   }
   
-  stage('Test'){
+  /*stage('Test'){
    tool name: 'maven', type: 'maven'
    sh '${mvnHome}/bin/mvn test'
   }
+  */
+  
 }
 
